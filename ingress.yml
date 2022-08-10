@@ -6,9 +6,13 @@ metadata:
     kubernetes.io/ingress.class: gce
 spec:
   rules:
-  - http:
+  - host: socketio.morlax.ar
+    http:
       paths:
-      - path: /*
+      - pathType: Prefix
+        path: "/"
         backend:
-          serviceName: socketio
-          servicePort: 3000
+          service:
+            name: socketio
+            port: 
+              number: 3000
