@@ -12,8 +12,8 @@ spec:
         app: socketio
     spec:
       containers:
-      - name: myapp
-        image: <Image>
+      - name: socketio
+        image: us-east1-docker.pkg.dev/kiwi-devops/socketio-app/socketio
         resources:
           limits:
             memory: "128Mi"
