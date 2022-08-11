@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY src/* ./
+COPY src/ ./
 
 EXPOSE 3000
 CMD [ "node", "index.js" ]
