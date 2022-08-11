@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redisconf
+data:
+  REDISHOST: value
+  REDISPORT: value

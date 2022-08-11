@@ -14,6 +14,9 @@ spec:
       containers:
       - name: socketio
         image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
+        envFrom:
+        - configMapRef:
+            name: redisconf
         resources:
           limits:
             memory: "128Mi"

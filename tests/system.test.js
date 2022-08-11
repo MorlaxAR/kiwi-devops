@@ -1,14 +1,14 @@
-const serv = require("../src/server");
+const app = require("../src/app");
 const Client = require("socket.io-client");
+const {redisClient} = require('../src/redis');
 const supertest = require('supertest');
 
 describe("socket.io web server tests", () => {
-  let socketioServer, httpServer, io, request;
+  let httpServer, io, request;
 
   beforeAll((done) => {
-    socketioServer = serv.createSocketioServer();
-    httpServer = socketioServer.httpServer;
-    io = socketioServer.io;
+    httpServer = app.server;
+    io = app.io;
     request = supertest(httpServer);
     httpServer.listen(() => {
       const port = httpServer.address().port;
@@ -23,6 +23,8 @@ describe("socket.io web server tests", () => {
   afterAll(() => {
     io.close();
     clientSocket.close();
+    httpServer.close();
+    redisClient.quit();
   });
 
   test("socket.io client / server connection should work", (done) => {
